@@ -13,6 +13,8 @@ Projeto acadêmico de uma rede social voltada para **pessoas surdas**, com a pro
 * Integração entre Front-end e Back-end
 * API para comunicação entre as partes do sistema
 
+---
+
 # Como Rodar o Librando
 
 ## 1. Acessar a pasta do Backend
