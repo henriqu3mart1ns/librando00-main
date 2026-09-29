@@ -261,35 +261,7 @@ Após o cadastro, o usuário recebe uma confirmação visual e é direcionado pa
 | **UPDATE** | ❌ | Não pode alterar contas de outros usuários |
 | **DELETE** | ❌ | Não pode excluir contas de outros usuários |
 
----
-
-## 2. 👨‍💼 Administrador
-
-**🎭 Tipo:** Ator Secundário
-
-**📌 Papel:**
-
-Responsável pela administração e supervisão dos usuários da plataforma.
-
-**📋 Responsabilidades:**
-
-- 🗂️ Administrar os registros de usuários.
-- 🔍 Consultar informações dos usuários.
-- ✏️ Atualizar informações quando permitido.
-- ⚙️ Executar ações administrativas relacionadas às contas.
-
-### 🔐 Permissões CRUD
-
-| ⚙️ Operação | 🔑 Permissão | 📄 Descrição |
-|---|---|---|
-| **CREATE** | ✅ | Criar registros de usuários, caso essa funcionalidade seja disponibilizada ao administrador |
-| **READ** | ✅ | Consultar informações dos usuários |
-| **UPDATE** | ✅ | Atualizar informações das contas |
-| **DELETE** | ✅ | Excluir ou desativar contas conforme as permissões administrativas |
-
----
-
-## 3. ⚙️ Sistema
+## 2. ⚙️ Sistema
 
 **🎭 Tipo:** Ator Automático
 
@@ -334,7 +306,6 @@ Permitir que um usuário não cadastrado crie uma nova conta na plataforma, desd
 ### 👥 Atores
 
 - 👤 **Usuário Não Cadastrado** — inicia e realiza o cadastro.
-- 👨‍💼 **Administrador** — possui responsabilidades administrativas relacionadas aos usuários.
 - ⚙️ **Sistema** — realiza automaticamente as validações e o processamento do cadastro.
 
 ---
