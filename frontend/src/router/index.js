@@ -4,8 +4,14 @@ import Cadastro from '../paginas/cadastro.vue';
 import VerificarEmail from '../paginas/verificar-email.vue';
 import EsqueciSenha from '../paginas/esqueci-senha.vue';
 import RedefinirSenha from '../paginas/redefinir-senha.vue';
+import Feed from '../paginas/Feed.vue';
+import Perfil from '../paginas/Perfil.vue';
 
 const routes = [
+  {
+    path: '/',
+    redirect: '/login', // Redireciona a página inicial para o login
+  },
   {
     path: '/login',
     name: 'login',
@@ -21,19 +27,28 @@ const routes = [
     name: 'verificar-email',
     component: VerificarEmail,
   },
-
   {
-  path: '/esqueci-senha',
-  name: 'esqueci-senha',
-  component: EsqueciSenha
+    path: '/esqueci-senha',
+    name: 'esqueci-senha',
+    component: EsqueciSenha,
   },
   {
     path: '/redefinir-senha',
     name: 'redefinir-senha',
-    component: RedefinirSenha
-  }
+    component: RedefinirSenha,
+  },
+  {
+    path: '/Feed',
+    name: 'Feed',
+    component: Feed,
+  },
+  {
+    path: '/Perfil',
+    name: 'Perfil',
+    component: Perfil,
+  },
   // adicione as próximas telas aqui, ex:
-  // { path: '/', name: 'home', component: Home },
+  // { path: '/home', name: 'home', component: Home },
 ];
 
 const router = createRouter({
