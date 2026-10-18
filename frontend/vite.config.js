@@ -1,18 +1,18 @@
-// frontend/vite.config.js
-
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
   server: {
     proxy: {
-      // assim o api.js pode chamar '/api/login' sem precisar
-      // saber a URL completa do backend
-      '/api': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-    },
-  },
-});
+      '/api': 'http://127.0.0.1:8000',
+      '/storage': 'http://127.0.0.1:8000'
+    }
+  }
+})
