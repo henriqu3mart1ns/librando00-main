@@ -20,57 +20,163 @@
 
 ## 1.3 Localização dos Artefatos
 
-* **LINK_REPOSITORIO_GITHUB:** `https://github.com/[seu-usuario]/[seu-repositorio]`
+* **LINK_REPOSITORIO_GITHUB:** `https://(https://github.com/angeldanylo35-ux/librando00)`
 * **BRANCH_PRINCIPAL:** `main`
 * **LINK_APLICACAO_DEPLOY:** Aplicação executada localmente por meio do XAMPP.
 * **LINK_BANCO_DADOS:** Banco de dados MySQL local.
 * **LINK_API_SWAGGER:** Não se aplica nesta etapa do projeto.
-* **LINK_DEMONSTRAÇÃO:** Aplicação executada localmente em `(https://librando.onrender.com)`
+* **LINK_DEMONSTRAÇÃO:** Aplicação executada localmente em `(http://localhost:5173/esqueci-senha)`
 
 ---
 
 # 2. ESTRUTURA DE DIRETÓRIOS DO PROJETO
 
 ```text
-librando/
-│
-├── docs/
-│   └── requisitos/
-│       └── RF-001-login.md
-│
-├── src/
-│   └── rf-001-login/
-│       ├── index.html
-│       ├── login.php
-│       ├── conexao.php
-│       └── README.md
-│
-├── database/
-│   ├── ddl/
-│   │   └── rf-001-usuarios-ddl.sql
-│   │
-│   └── seeds/
-│       └── usuarios-seeds.sql
-│
-├── .github/
-│   └── workflows/
+librando00-main/
 │
 ├── README.md
 │
-└── .gitignore
+├── docs/
+│   ├── api/
+│   │   └── swagger.json
+│   │
+│   └── requisitos/
+│       ├── rf-001-login.md
+│       ├── rf-002-cadastrar.md
+│       └── rf-003-Esqueci-minha-senha.md
+│
+├── backend/
+│   │
+│   ├── app/
+│   │   ├── Http/
+│   │   │   └── Controllers/
+│   │   │       ├── Controller.php
+│   │   │       └── api/
+│   │   │           └── AuthController.php
+│   │   │
+│   │   ├── Mail/
+│   │   │   ├── VerificacaoCadastro.php
+│   │   │   └── RecuperacaoSenha.php
+│   │   │
+│   │   ├── Models/
+│   │   │   ├── User.php
+│   │   │   ├── Usuario.php
+│   │   │   ├── CadastroPendente.php
+│   │   │   └── RecuperacaoSenha.php
+│   │   │
+│   │   ├── Notifications/
+│   │   └── Providers/
+│   │
+│   ├── database/
+│   │   ├── factories/
+│   │   ├── migrations/
+│   │   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   │   ├── 0001_01_01_000002_create_jobs_table.php
+│   │   │   ├── 2026_09_06_021505_create_usuarios_table.php
+│   │   │   ├── 2026_09_06_024645_create_personal_access_tokens_table.php
+│   │   │   ├── create_cadastros_pendentes_table.php
+│   │   │   └── create_recuperacao_senhas_table.php
+│   │   │
+│   │   └── seeders/
+│   │
+│   ├── resources/
+│   │   └── views/
+│   │       └── emails/
+│   │           ├── verificacao-cadastro.blade.php
+│   │           └── recuperacao-senha.blade.php
+│   │
+│   ├── routes/
+│   │   ├── api.php
+│   │   ├── web.php
+│   │   └── console.php
+│   │
+│   ├── config/
+│   ├── bootstrap/
+│   ├── public/
+│   ├── storage/
+│   ├── tests/
+│   ├── artisan
+│   ├── composer.json
+│   └── .env
+│
+└── frontend/
+    │
+    ├── public/
+    │
+    ├── src/
+    │   │
+    │   ├── assets/
+    │   │   └── estetico.css
+    │   │
+    │   ├── components/
+    │   │
+    │   ├── paginas/
+    │   │   ├── login.vue
+    │   │   ├── cadastro.vue
+    │   │   ├── verificar-email.vue
+    │   │   ├── esqueci-senha.vue
+    │   │   └── redefinir-senha.vue
+    │   │
+    │   ├── router/
+    │   │   └── index.js
+    │   │
+    │   ├── services/
+    │   │   └── api.js
+    │   │
+    │   ├── App.vue
+    │   └── style.css
+    │
+    ├── index.html
+    ├── package.json
+    ├── package-lock.json
+    └── vite.config.js
 ```
 
-## Localização dos Arquivos
+### 📚 Documentação
 
-* **Documentação:** `docs/requisitos/RF-001-login.md`
-* **Página de login:** `src/rf-001-login/index.html`
-* **Estilos CSS:** `src/rf-001-login/index.html`
-* **Processamento do login:** `src/rf-001-login/login.php`
-* **Conexão com o banco:** `src/rf-001-login/conexao.php`
-* **Script de criação do banco:** `database/ddl/rf-001-usuarios-ddl.sql`
-* **Dados de teste:** `database/seeds/usuarios-seeds.sql`
-* **Guia geral:** `README.md`
+* **Documentação geral:** `README.md`
+* **Documentação dos requisitos:** `docs/requisitos/`
+* **RF-001 — Login:** `docs/requisitos/rf-001-login.md`
+* **RF-002 — Cadastro:** `docs/requisitos/rf-002-cadastrar.md`
+* **RF-003 — Esqueci minha senha:** `docs/requisitos/rf-003-Esqueci-minha-senha.md`
+* **Documentação da API:** `docs/api/swagger.json`
 
+### ⚙️ Back-end
+
+* **Back-end Laravel:** `backend/`
+* **Controllers da API:** `backend/app/Http/Controllers/api/`
+* **Autenticação:** `backend/app/Http/Controllers/api/AuthController.php`
+* **Models:** `backend/app/Models/`
+* **Model de usuário:** `backend/app/Models/Usuario.php`
+* **Model de cadastro pendente:** `backend/app/Models/CadastroPendente.php`
+* **Model de recuperação de senha:** `backend/app/Models/RecuperacaoSenha.php`
+* **E-mails:** `backend/app/Mail/`
+* **E-mail de confirmação:** `backend/app/Mail/VerificacaoCadastro.php`
+* **E-mail de recuperação:** `backend/app/Mail/RecuperacaoSenha.php`
+* **Migrations:** `backend/database/migrations/`
+* **Seeders:** `backend/database/seeders/`
+* **Rotas da API:** `backend/routes/api.php`
+* **Rotas web:** `backend/routes/web.php`
+* **Configurações do Laravel:** `backend/config/`
+* **Testes automatizados:** `backend/tests/`
+* **Ponto de entrada público do Laravel:** `backend/public/index.php`
+* **Templates dos e-mails:** `backend/resources/views/emails/`
+
+### 🎨 Front-end
+
+* **Interface Vue.js:** `frontend/`
+* **Páginas do front-end:** `frontend/src/paginas/`
+* **Tela de login:** `frontend/src/paginas/login.vue`
+* **Tela de cadastro:** `frontend/src/paginas/cadastro.vue`
+* **Verificação de e-mail:** `frontend/src/paginas/verificar-email.vue`
+* **Esqueci minha senha:** `frontend/src/paginas/esqueci-senha.vue`
+* **Redefinição de senha:** `frontend/src/paginas/redefinir-senha.vue`
+* **Componentes Vue:** `frontend/src/components/`
+* **Configuração das rotas Vue:** `frontend/src/router/index.js`
+* **Comunicação com a API:** `frontend/src/services/api.js`
+* **Estilos:** `frontend/src/assets/` e `frontend/src/style.css`
+* **Configuração do Vite:** `frontend/vite.config.js`
 ---
 
 # 3. DETALHAMENTO TÉCNICO DE UM REQUISITO FUNCIONAL
@@ -223,45 +329,6 @@ O sistema deve garantir que:
 - Tentativas excessivas de login sejam controladas;
 - Usuários com contas desativadas não consigam acessar a rede social;
 - Credenciais inválidas não permitam o acesso à plataforma.
-
-
-### 4. 👨‍💼 ADMINISTRADOR — Ator Secundário
-
-**Papel:**  
-Realizar o login e acessar as funcionalidades administrativas da rede social.
-
-**Responsabilidade:**
-
-O administrador possui uma conta cadastrada na plataforma e utiliza o mesmo processo de autenticação dos demais usuários. A diferença está nas permissões concedidas após a autenticação.
-
-Durante o login, o administrador deve:
-
-- Informar o e-mail cadastrado;
-- Informar a senha;
-- Solicitar o login;
-- Ter suas credenciais validadas pelo sistema;
-- Ter o status da conta verificado;
-- Ter seu perfil de administrador identificado pelo sistema;
-- Acessar a área administrativa após uma autenticação válida.
-
-Após o login, o administrador poderá realizar atividades específicas de gerenciamento da plataforma, de acordo com suas permissões, como:
-
-- Gerenciar usuários;
-- Visualizar informações dos usuários;
-- Gerenciar ou desativar contas;
-- Moderar conteúdos publicados na rede social;
-- Analisar denúncias;
-- Aplicar medidas administrativas previstas pelo sistema.
-
-**Permissões — CRUD:**
-
-| Operação | Permissão | Justificativa |
-|---|:---:|---|
-| **CREATE** | ✅ | Pode realizar operações administrativas que envolvam a criação de registros, quando previstas pelo sistema. |
-| **READ** | ✅ | Pode consultar informações necessárias para administração e moderação da plataforma. |
-| **UPDATE** | ✅ | Pode alterar informações ou status de usuários e conteúdos conforme suas permissões administrativas. |
-| **DELETE** | ✅ | Pode excluir ou remover registros e conteúdos quando essa ação estiver prevista para a administração da plataforma. |
-Não aplicável nesta etapa |
 
 
 # 🔄 3. ESPECIFICAÇÃO DE CASOS DE USO + REQUISITOS NÃO-FUNCIONAIS
@@ -588,41 +655,124 @@ O fluxo funciona da seguinte maneira:
 └──────────────────────────────────────────────┘
 ```
 
-ADR-001 — Escolha do banco de dados
+# Registros de Decisão de Arquitetura (ADR) — RF001 Login
 
-Status: Aceito
+---
 
-Contexto:
-O sistema precisa de um banco de dados para armazenar
-os usuários e validar o login.
+## ADR-001 — Escolha do Banco de Dados
 
-Decisão:
-Será utilizado SQLite.
+* **Status:** Aceito
+* **Data:** 2026-09-29
 
-Motivo:
-O projeto possui pequeno volume de dados e o SQLite
-é simples de configurar e não exige um servidor de banco
-de dados separado.
+### Contexto
+O sistema necessita de um mecanismo de persistência para armazenar os dados cadastrais dos usuários e consultar suas credenciais durante o processo de validação do login.
 
-Consequências:
-+ Fácil configuração
-+ Baixo custo
-+ Simples para desenvolvimento
-- Menos adequado para grandes volumes de usuários
+### Decisão
+Utilizar o **SQLite** como gerenciador de banco de dados relacional da aplicação.
 
-ADR-002 — Escolha do back-end
+### Motivo
+O projeto possui uma estimativa inicial de baixo volume de dados e tráfego moderado. O SQLite não requer a instalação ou manutenção de um servidor de banco de dados dedicado, reduzindo a complexidade do ambiente.
 
-Contexto:
-Precisamos implementar a autenticação dos usuários.
+### Consequências
+* **Positivas:**
+  * **Simplicidade de configuração:** Armazenamento em arquivo único local, facilitando o ambiente de desenvolvimento e testes.
+  * **Baixo custo de infraestrutura:** Elimina a necessidade de provisionar e pagar por um servidor separado.
+  * **Portabilidade:** Facilidade para realizar backups e migrações do banco de dados.
+* **Negativas:**
+  * **Escalabilidade limitada:** Menos adequado para cenários com alto volume de gravação concorrente ou grande quantidade de usuários simultâneos.
 
-Decisão:
-Utilizar PHP no back-end.
+---
 
-Motivo:
-PHP é compatível com a hospedagem escolhida e atende
-às necessidades do projeto.
+## ADR-002 — Escolha da Tecnologia Back-end
 
-Status: Aceito
+* **Status:** Aceito
+* **Data:** 2026-09-29
+
+### Contexto
+Precisamos definir a linguagem e tecnologia que processará a regra de negócio do servidor, incluindo a autenticação de usuários, validação de segurança e integração com a base de dados.
+
+### Decisão
+Utilizar a linguagem **PHP** no desenvolvimento do back-end.
+
+### Motivo
+O PHP oferece suporte nativo na hospedagem já selecionada para o projeto, além de atender integralmente aos requisitos técnicos de autenticação e manipulação do banco de dados com curva de aprendizagem reduzida.
+
+### Consequências
+* **Positivas:**
+  * **Compatibilidade imediata:** Integração direta e sem atritos com o ambiente de hospedagem definido.
+  * **Produtividade:** Desenvolvimento ágil para fluxos de autenticação e CRUDs.
+  * **Ecossistema maduro:** Vasta disponibilidade de bibliotecas e documentação.
+* **Negativas:**
+  * **Gargalos de concorrência:** Pode requerer arquiteturas específicas caso o volume de requisições em tempo real cresça significativamente no futuro.
+
+---
+
+## ADR-003 — Gerenciamento de Sessões do Usuário
+
+* **Status:** Aceito
+* **Data:** 2026-09-29
+
+### Contexto
+Após o login bem-sucedido, o sistema precisa manter o estado de autenticação do usuário para permitir o acesso a páginas e recursos restritos.
+
+### Decisão
+Utilizar **Sessões Nativas do PHP** (`$_SESSION`) com *cookies* de sessão protegidos com as flags `HttpOnly` e `SameSite=Lax`.
+
+### Motivo
+Como o back-end em PHP e o banco SQLite estão no mesmo ambiente e a aplicação é estruturada de forma tradicional (renderizada no servidor), as sessões nativas são simples e de alta performance para esse cenário.
+
+### Consequências
+* **Positivas:**
+  * **Simplicidade de implementação:** Não requer bibliotecas externas ou tokens complexos.
+  * **Segurança:** As *flags* `HttpOnly` e `SameSite` impedem que o *cookie* seja acessado via scripts de terceiros (XSS).
+* **Negativas:**
+  * **Dificuldade de escalabilidade horizontal:** Sessões em arquivo local impedem que o sistema rode em múltiplos servidores sem um armazenador central de sessões (ex.: Redis).
+
+---
+
+## ADR-004 — Algoritmo de Hashing para Senhas
+
+* **Status:** Aceito
+* **Data:** 2026-09-29
+
+### Contexto
+Para atender aos requisitos de segurança do `RF001-Login`, as senhas dos usuários não podem ser armazenadas em texto puro no banco de dados SQLite.
+
+### Decisão
+Adotar a função nativa do PHP `password_hash()` utilizando o algoritmo **BCRYPT**.
+
+### Motivo
+O BCRYPT inclui *salt* automático e fator de custo reconfigurável, sendo o padrão de segurança recomendado para a linguagem PHP sempre que se trata de credenciais de usuários.
+
+### Consequências
+* **Positivas:**
+  * **Proteção contra vazamentos:** Isola as senhas contra ataques de dicionário e *rainbow tables*.
+  * **Manutenção fácil:** Função nativa e mantida pelo próprio PHP.
+* **Negativas:**
+  * **Uso de processamento:** Requer mais CPU do que algoritmos simples como MD5 ou SHA1 (o que é intencional por segurança).
+
+---
+
+## ADR-005 — Estratégia de Validação e Sanitização de Dados
+
+* **Status:** Aceito
+* **Data:** 2026-09-29
+
+### Contexto
+Os formulários de cadastro e login podem receber dados maliciosos ou mal formatados, resultando em falhas de segurança como SQL Injection ou XSS.
+
+### Decisão
+Utilizar **PDO (PHP Data Objects)** com *Prepared Statements* para qualquer consulta ao SQLite, além de sanitização com `filter_input()` do PHP para as entradas do usuário.
+
+### Motivo
+O uso de parâmetros preparados elimina o risco de injeção de SQL no banco de dados e padroniza a captura de entradas na camada back-end.
+
+### Consequências
+* **Positivas:**
+  * **Segurança elevada:** Previne contaminações e injeções maliciosas no banco de dados SQLite.
+  * **Código limpo:** Evita a necessidade de montar strings SQL concatenando variáveis manualmente.
+* **Negativas:**
+  * **Exigência de disciplina:** Toda nova consulta ao banco deve obrigatoriamente seguir o padrão de *Prepared Statements*.
 
 ### Tecnologias Escolhidas
 
@@ -667,45 +817,404 @@ sistema, tomando como referência as recomendações da OWASP.
   "openapi": "3.0.0",
   "info": {
     "title": "Librando API",
+    "description": "API de autenticação e gerenciamento de usuários da plataforma Librando.",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000/api",
+      "description": "Servidor local"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Autenticação",
+      "description": "Operações relacionadas a login, cadastro e recuperação de senha."
+    }
+  ],
   "paths": {
-    "/login.php": {
+    "/login": {
       "post": {
+        "tags": [
+          "Autenticação"
+        ],
         "summary": "Realizar login",
+        "description": "Autentica um usuário utilizando e-mail e senha.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "required": ["email", "senha"],
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "example": "usuario@email.com"
-                  },
-                  "senha": {
-                    "type": "string",
-                    "example": "123456"
-                  }
-                }
+                "$ref": "#/components/schemas/LoginRequest"
+              },
+              "example": {
+                "email": "usuario@email.com",
+                "senha": "123456"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Login realizado com sucesso"
+            "description": "Login realizado com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": true,
+                  "mensagem": "Login efetuado com sucesso!",
+                  "nome": "João da Silva"
+                }
+              }
+            }
           },
           "400": {
-            "description": "Dados inválidos"
+            "description": "Dados inválidos.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "Preencha todos os campos."
+                }
+              }
+            }
           },
           "401": {
-            "description": "E-mail ou senha incorretos"
+            "description": "E-mail ou senha incorretos.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "E-mail ou senha inválidos."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/cadastro": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Cadastrar usuário",
+        "description": "Inicia o cadastro de um novo usuário e envia um link de confirmação para o e-mail informado.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastroRequest"
+              },
+              "example": {
+                "nome": "João da Silva",
+                "email": "joao@email.com",
+                "nome_usuario": "joaosilva",
+                "data_nascimento": "2000-05-15",
+                "senha": "123456",
+                "confirmar_senha": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cadastro pendente criado e e-mail de confirmação enviado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": true,
+                  "mensagem": "Um link de confirmação foi enviado para seu e-mail. O link é válido por 5 minutos."
+                }
+              }
+            }
           },
-          "500": {
-            "description": "Erro interno do servidor"
+          "400": {
+            "description": "Dados inválidos ou usuário já cadastrado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "Este e-mail já está cadastrado."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/verificar-email": {
+      "get": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Verificar e-mail",
+        "description": "Confirma o cadastro do usuário através do token enviado por e-mail.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "description": "Token recebido no link de confirmação.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "E-mail confirmado com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": true,
+                  "mensagem": "E-mail confirmado! Cadastro realizado com sucesso.",
+                  "nome": "João da Silva"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Token inválido, ausente ou expirado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "O link de verificação é inválido ou expirou."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/esqueci-senha": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Solicitar recuperação de senha",
+        "description": "Envia um link para redefinição de senha para o e-mail cadastrado.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EsqueciSenhaRequest"
+              },
+              "example": {
+                "email": "usuario@email.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Link de recuperação enviado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": true,
+                  "mensagem": "Um link para redefinir sua senha foi enviado para seu e-mail."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "E-mail inválido ou não informado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "Informe um e-mail válido."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "Não encontramos uma conta com esse e-mail."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/redefinir-senha": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Redefinir senha",
+        "description": "Altera a senha do usuário utilizando o token recebido no e-mail de recuperação.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedefinirSenhaRequest"
+              },
+              "example": {
+                "token": "token-recebido-no-email",
+                "senha": "novaSenha123",
+                "confirmar_senha": "novaSenha123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Senha alterada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": true,
+                  "mensagem": "Senha alterada com sucesso!"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos ou token expirado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "O link de recuperação é inválido ou expirou."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "sucesso": false,
+                  "mensagem": "Usuário não encontrado."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginRequest": {
+        "type": "object",
+        "required": [
+          "email",
+          "senha"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "usuario@email.com"
+          },
+          "senha": {
+            "type": "string",
+            "format": "password",
+            "example": "123456"
+          }
+        }
+      },
+
+      "CadastroRequest": {
+        "type": "object",
+        "required": [
+          "nome",
+          "email",
+          "data_nascimento",
+          "nome_usuario",
+          "senha",
+          "confirmar_senha"
+        ],
+        "properties": {
+          "nome": {
+            "type": "string",
+            "maxLength": 100,
+            "example": "João da Silva"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 150,
+            "example": "joao@email.com"
+          },
+          "data_nascimento": {
+            "type": "string",
+            "format": "date",
+            "example": "2000-05-15"
+          },
+          "nome_usuario": {
+            "type": "string",
+            "maxLength": 50,
+            "example": "joaosilva"
+          },
+          "senha": {
+            "type": "string",
+            "format": "password",
+            "minLength": 6,
+            "example": "123456"
+          },
+          "confirmar_senha": {
+            "type": "string",
+            "format": "password",
+            "minLength": 6,
+            "example": "123456"
+          }
+        }
+      },
+
+      "EsqueciSenhaRequest": {
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "usuario@email.com"
+          }
+        }
+      },
+
+      "RedefinirSenhaRequest": {
+        "type": "object",
+        "required": [
+          "token",
+          "senha",
+          "confirmar_senha"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "token-recebido-no-email"
+          },
+          "senha": {
+            "type": "string",
+            "format": "password",
+            "minLength": 6,
+            "example": "novaSenha123"
+          },
+          "confirmar_senha": {
+            "type": "string",
+            "format": "password",
+            "minLength": 6,
+            "example": "novaSenha123"
           }
         }
       }
